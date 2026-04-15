@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Keynetics — References</title>
+<link rel="stylesheet" href="styles.css" />
+
+<style>
+:root{
+  --blue:#56BDAA;
+}
+
+/* Background Pattern */
+.bg-video{
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  opacity:.3;
+  pointer-events:none;
+  z-index:0;
+  transition:opacity .2s linear;
+}
+
+.v2{
+  opacity:0;
+}
+
+
+body{
+  position:relative;
+}
+
+/* Main Layout */
+
+main{
+  min-height:calc(100dvh - 72px);
+  display:grid;
+  place-items:center;
+  padding:16px;
+  position:relative;
+  z-index:1;
+}
+
+.picker{
+  width:min(620px, 100%);
+  display:flex;
+  gap:40px;
+  flex-wrap:wrap;
+  justify-content:center;
+  align-items:center;
+}
+
+.pill{
+  width:260px;
+  height:90px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--blue);
+  color:#fff;
+  border-radius:999px;
+  text-decoration:none;
+  font-size:22px;
+  font-weight:700;
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+
+.pill:hover{
+  transform:translateY(-4px);
+  box-shadow:0 15px 30px rgba(0,0,0,.15);
+}
+
+.nav-with-icon{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.nav-icon{
+  width:16px;
+  height:16px;
+  object-fit:contain;
+  flex:0 0 16px;
+}
+
+.hamburger{
+  width:44px;
+  height:44px;
+  border:1px solid var(--line);
+  border-radius:12px;
+  background:#fff;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:0;
+}
+
+.hamburger__icon{
+  font-size:18px;
+  line-height:1;
+  transform:translateY(-1px);
+  color:#56BDAA;
+}
+
+.brand strong,
+.brand-text{
+  color:#56BDAA;
+}
+
+/* Mobile Layout */
+
+@media (max-width: 768px){
+  main{
+    min-height:calc(100dvh - 72px);
+    padding:20px 14px;
+  }
+
+  .picker{
+    width:min(420px, 100%);
+    gap:20px;
+  }
+
+  .pill{
+    width:100%;
+    height:82px;
+    font-size:20px;
+  }
+}
+
+@media (max-width: 480px){
+  main{
+    min-height:calc(100dvh - 72px);
+    padding:18px 12px;
+  }
+
+  .picker{
+    width:100%;
+    flex-direction:column;
+    gap:14px;
+  }
+
+  .pill{
+    width:100%;
+    height:72px;
+    font-size:18px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<video class="bg-video v1" muted playsinline autoplay>
+  <source src="Pattern 2.mp4" type="video/mp4">
+</video>
+
+<video class="bg-video v2" muted playsinline>
+  <source src="Pattern 2.mp4" type="video/mp4">
+</video>
+
+<div class="overlay" id="overlay" hidden></div>
+
+<aside class="sidebar" id="sidebar" aria-hidden="true">
+
+  <div class="sidebar__top">
+    <strong>MENU</strong>
+    <button class="closebtn" id="closeMenu">×</button>
+  </div>
+
+  <nav aria-label="Primary">
+    <ul class="navlist">
+
+      <li>
+        <a href="tutorials.html" class="nav-with-icon">
+          <img src="1.svg" class="nav-icon" alt="">
+          <span>After Effects Tutorials</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="plugins.html" class="nav-with-icon">
+          <img src="2.svg" class="nav-icon" alt="">
+          <span>Useful Plugins/Scripts</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="quiz.html" class="nav-with-icon">
+          <img src="3.svg" class="nav-icon" alt="">
+          <span>Quiz</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="artists.html" class="nav-with-icon is-active">
+          <img src="4.svg" class="nav-icon" alt="">
+          <span>Motion Graphics Artists &amp; Companies</span>
+        </a>
+      </li>
+
+    </ul>
+  </nav>
+  
+
+</aside>
+
+<header class="topbar">
+  <div class="topbar__inner">
+
+    <button class="hamburger" id="openMenu">
+      <span class="hamburger__icon">☰</span>
+    </button>
+
+    <div class="brand">
+      <a href="index.html" style="text-decoration:none; color:inherit;">
+        <span class="brand-switch">
+          <strong class="brand-text brand-default">Keynetics</strong>
+          <strong class="brand-text brand-hover">Keyframe/Kinetic</strong>
+        </span>
+      </a>
+    </div>
+
+  </div>
+</header>
+
+<main>
+  <div class="picker">
+    <a class="pill" href="artists-list.html">Artists</a>
+    <a class="pill" href="companies-list.html">Companies</a>
+  </div>
+</main>
+
+<script>
+const sidebar = document.getElementById("sidebar")
+const overlay = document.getElementById("overlay")
+const openBtn = document.getElementById("openMenu")
+const closeBtn = document.getElementById("closeMenu")
+
+function openMenu(){
+  sidebar.classList.add("is-open")
+  overlay.classList.add("is-open")
+  overlay.hidden = false
+}
+
+function closeMenu(){
+  sidebar.classList.remove("is-open")
+  overlay.classList.remove("is-open")
+  overlay.hidden = true
+}
+
+openBtn.onclick = openMenu
+closeBtn.onclick = closeMenu
+overlay.onclick = closeMenu
+
+
+const v1 = document.querySelector(".v1");
+const v2 = document.querySelector(".v2");
+
+v1.onended = () => {
+  v2.currentTime = 0;
+  v2.play();
+  v2.style.opacity = 0.3;
+  v1.style.opacity = 0;
+};
+
+v2.onended = () => {
+  v1.currentTime = 0;
+  v1.play();
+  v1.style.opacity = 0.3;
+  v2.style.opacity = 0;
+};
+</script>
+
+</body>
+</html>

@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Keynetics — Plugins</title>
+<link rel="stylesheet" href="styles.css" />
+
+<style>
+main{
+  min-height:calc(100dvh - 72px);
+  max-width:1100px;
+  margin:0 auto;
+  padding:40px 16px 80px;
+  position:relative;
+  z-index:1;
+}
+
+/* Keyframe Design */
+
+.bg-svg{
+  position:fixed;
+  pointer-events:none;
+  opacity:.3;
+  z-index:0;
+}
+
+.bg-svg.top-right{
+  top:-100px;
+  right:-100px;
+  width:500px;
+}
+
+.bg-svg.bottom-left{
+  bottom:-100px;
+  left:-100px;
+  width:500px;
+}
+
+.hero{
+  width:min(900px,100%);
+  margin:0 auto 28px;
+  text-align:center;
+  border:1px solid var(--line);
+  background:var(--panel);
+  border-radius:var(--radius);
+  padding:48px;
+}
+
+.hero h1{
+  margin:0 0 14px;
+  font-size:clamp(34px,4vw,48px);
+  color:#FF8A00;
+}
+
+.hero p{
+  margin:0 auto;
+  width:100%;
+  color:var(--muted);
+  font-size:16px;
+  text-align:center;
+  line-height:1.6;
+}
+
+/* Grid System */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  gap:12px;
+}
+
+.plugin-link{
+  display:block;
+  text-decoration:none;
+  color:inherit;
+  grid-column:span 12;
+}
+
+/* Main Contents*/
+.card{
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:20px;
+  background:#fff;
+  transition:background .18s ease, transform .18s ease;
+}
+
+.plugin-link:hover .card{
+  background:var(--panel);
+}
+
+
+.plugin-copy h2{
+  margin:0 0 8px;
+  font-size:18px;
+  color:#FF8A00;
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+
+.link-badge{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:14px;
+  height:14px;
+  font-size:8px;
+  border:1px solid currentColor;
+  border-radius:999px;
+  opacity:.6;
+  transition:.2s ease;
+}
+
+/* Hover */
+.plugin-link:hover .link-badge{
+  transform:translate(2px,-2px) scale(1.2);
+  opacity:1;
+}
+
+.plugin-card{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 140px;
+  gap:20px;
+  align-items:center;
+}
+
+.plugin-copy p{
+  margin:0;
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.6;
+}
+
+.plugin-thumb{
+  width:140px;
+  height:140px;
+  border:1px solid #dcdcdc;
+  border-radius:16px;
+  overflow:hidden;
+  background:#f2f2f2;
+  flex-shrink:0;
+}
+
+.plugin-thumb img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+/* Desktop Layout */
+@media (min-width:820px){
+  .plugin-link.card--half{
+    grid-column:span 6;
+  }
+}
+
+.nav-with-icon{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.nav-icon{
+  width:16px;
+  height:16px;
+  object-fit:contain;
+  flex:0 0 16px;
+}
+
+.hamburger{
+  width:44px;
+  height:44px;
+  border:1px solid var(--line);
+  border-radius:12px;
+  background:#fff;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:0;
+}
+
+.hamburger__icon{
+  font-size:18px;
+  line-height:1;
+  transform:translateY(-1px);
+  color:#FF8A00;
+}
+
+.brand strong,
+.brand-text{
+  color:#FF8A00;
+}
+
+/* Mobile Layout */
+
+@media (max-width: 768px){
+  .bg-svg{
+    display:none;
+  }
+
+  main{
+    padding:24px 14px 56px;
+  }
+
+  .hero{
+    margin:0 auto 20px;
+    padding:24px 18px;
+  }
+
+  .hero h1{
+    font-size:clamp(28px,8vw,36px);
+    line-height:1.15;
+  }
+
+  .hero p{
+    font-size:15px;
+    line-height:1.55;
+  }
+
+  .card{
+    padding:18px;
+  }
+}
+
+@media (max-width: 700px){
+  .plugin-card{
+    grid-template-columns:1fr;
+    gap:16px;
+  }
+
+  .plugin-copy{
+    text-align:center;
+  }
+
+  .plugin-copy h2{
+    justify-content:center;
+  }
+
+  .plugin-thumb{
+    width:140px;
+    height:140px;
+    margin:0 auto;
+  }
+}
+
+@media (max-width: 480px){
+  main{
+    padding:20px 12px 44px;
+  }
+
+  .hero{
+    padding:20px 14px;
+  }
+
+  .hero h1{
+    font-size:clamp(24px,9vw,30px);
+  }
+
+  .hero p{
+    font-size:14px;
+  }
+
+  .card{
+    padding:16px;
+  }
+
+  .plugin-copy h2{
+    font-size:17px;
+  }
+
+  .plugin-copy p{
+    font-size:13px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<img src="2(stroke).svg" class="bg-svg top-right" alt="">
+<img src="2(stroke).svg" class="bg-svg bottom-left" alt="">
+
+<div class="overlay" id="overlay" hidden></div>
+
+<aside class="sidebar" id="sidebar" aria-hidden="true">
+
+  <div class="sidebar__top">
+    <strong>MENU</strong>
+    <button class="closebtn" id="closeMenu">×</button>
+  </div>
+
+  <nav>
+    <ul class="navlist">
+
+      <li>
+        <a href="tutorials.html" class="nav-with-icon">
+          <img src="1.svg" class="nav-icon">
+          <span>After Effects Tutorials</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="plugins.html" class="nav-with-icon is-active">
+          <img src="2.svg" class="nav-icon">
+          <span>Useful Plugins/Scripts</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="quiz.html" class="nav-with-icon">
+          <img src="3.svg" class="nav-icon">
+          <span>Quiz</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="artists.html" class="nav-with-icon">
+          <img src="4.svg" class="nav-icon">
+          <span>Motion Graphics Artists & Companies</span>
+        </a>
+      </li>
+
+    </ul>
+  </nav>
+
+</aside>
+
+<header class="topbar">
+  <div class="topbar__inner">
+
+    <button class="hamburger" id="openMenu">
+      <span class="hamburger__icon">☰</span>
+    </button>
+
+    <div class="brand">
+      <a href="index.html" style="text-decoration:none; color:inherit;">
+        <span class="brand-switch">
+          <strong class="brand-text brand-default">Keynetics</strong>
+          <strong class="brand-text brand-hover">Keyframe/Kinetic</strong>
+        </span>
+      </a>
+    </div>
+
+  </div>
+</header>
+
+<main>
+
+  <div class="hero">
+    <h1>Useful Plugins/Scripts</h1>
+    <p>Plugins and scripts to make your work even more powerful.</p>
+  </div>
+
+  <div class="grid">
+
+    <a class="plugin-link card--half" href="https://aescripts.com/flow/" target="_blank">
+      <article class="card">
+        <div class="plugin-card">
+          <div class="plugin-copy">
+            <h2>Flow <span class="link-badge">↗</span></h2>
+            <p>It is a script that helps users apply easing and graph adjustments faster and more easily in After Effects.</p>
+          </div>
+          <div class="plugin-thumb">
+            <img src="flow.png">
+          </div>
+        </div>
+      </article>
+    </a>
+
+    <a class="plugin-link card--half" href="https://aescripts.com/un-precompose/" target="_blank">
+      <article class="card">
+        <div class="plugin-card">
+          <div class="plugin-copy">
+            <h2>Un-PreCompose <span class="link-badge">↗</span></h2>
+            <p>Un-PreCompose reverses the built-in After Effects function “Pre-compose,” making it easier to separate layers again.</p>
+          </div>
+          <div class="plugin-thumb">
+            <img src="unprecompose.png">
+          </div>
+        </div>
+      </article>
+    </a>
+
+    <a class="plugin-link card--half" href="https://www.videocopilot.net/blog/2018/05/fx-console-updated-to-v1-0-3/" target="_blank">
+      <article class="card">
+        <div class="plugin-card">
+          <div class="plugin-copy">
+            <h2>FX Console <span class="link-badge">↗</span></h2>
+            <p>It is a script that allows users to access and apply effects more quickly inside After Effects.</p>
+          </div>
+          <div class="plugin-thumb">
+            <img src="fx-console.jpg">
+          </div>
+        </div>
+      </article>
+    </a>
+
+    <a class="plugin-link card--half" href="https://aescripts.com/deep-glow/" target="_blank">
+      <article class="card">
+        <div class="plugin-card">
+          <div class="plugin-copy">
+            <h2>Deep Glow 2 <span class="link-badge">↗</span></h2>
+            <p>It is a plugin that creates a more pleasing glow than the built-in glow effect in After Effects.</p>
+          </div>
+          <div class="plugin-thumb">
+            <img src="deep-glow.jpg">
+          </div>
+        </div>
+      </article>
+    </a>
+
+  </div>
+
+</main>
+
+<script>
+const sidebar = document.getElementById("sidebar")
+const overlay = document.getElementById("overlay")
+const openBtn = document.getElementById("openMenu")
+const closeBtn = document.getElementById("closeMenu")
+
+openBtn.onclick = () => {
+  sidebar.classList.add("is-open")
+  overlay.classList.add("is-open")
+  overlay.hidden = false
+}
+
+closeBtn.onclick = () => {
+  sidebar.classList.remove("is-open")
+  overlay.classList.remove("is-open")
+  overlay.hidden = true
+}
+
+overlay.onclick = closeBtn.onclick
+</script>
+
+</body>
+</html>
