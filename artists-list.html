@@ -122,7 +122,6 @@ main{
   flex-wrap:wrap;
 }
 
-
 .link-badge{
   display:inline-flex;
   align-items:center;
@@ -140,7 +139,6 @@ main{
   transform:translate(2px,-2px) scale(1.2);
   opacity:1;
 }
-
 
 .artist-copy p{
   margin:0;
@@ -242,6 +240,12 @@ main{
   object-fit:contain;
 }
 
+.nav-icon-spacer{
+  width:16px;
+  height:16px;
+  display:block;
+}
+
 .hamburger{
   width:44px;
   height:44px;
@@ -280,6 +284,14 @@ main{
 
 <nav aria-label="Primary">
 <ul class="navlist">
+
+<!-- ✅ Home 추가 -->
+<li>
+<a href="index.html" class="nav-with-icon">
+<span class="nav-icon-spacer"></span>
+<span>Home</span>
+</a>
+</li>
 
 <li>
 <a href="tutorials.html" class="nav-with-icon">
